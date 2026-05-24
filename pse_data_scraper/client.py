@@ -11,12 +11,20 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-DEFAULT_HEADERS = {
-    "User-Agent": "Mozilla/5.0",
-    "Accept": "application/json, text/html, */*; q=0.01",
-    "Connection": "keep-alive",
-}
+# Original Value
+# DEFAULT_HEADERS = {
+#     "User-Agent": "Mozilla/5.0",
+#     "Accept": "application/json, text/html, */*; q=0.01",
+#     "Connection": "keep-alive",
+# }
 
+DEFAULT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Connection": "keep-alive",
+    "Referer": "https://edge.pse.com.ph/",
+}
 
 class PSEClient:
     """
@@ -27,7 +35,8 @@ class PSEClient:
     def __init__(
         self,
         rate_limit_seconds: float = 0.6,
-        timeout_seconds: int = 30,
+        # timeout_seconds: int = 30, # Original Value
+        timeout_seconds: int = 90,
         session: Optional[requests.Session] = None,
         max_retries: int = 4,
         backoff_factor: float = 0.5,
